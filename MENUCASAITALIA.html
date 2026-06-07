@@ -1,0 +1,2511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Casa Italia — Pizzeria & Ristorante</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D0;
+    --gold: #C8973A;
+    --gold-light: #E8B86D;
+    --gold-pale: #F5DFA8;
+    --red: #9B2020;
+    --red-deep: #7A1515;
+    --red-light: #C43030;
+    --green: #2D5A27;
+    --green-light: #3D7A35;
+    --dark: #1A1208;
+    --dark-mid: #2C1F0A;
+    --text: #2C1A0A;
+    --text-light: #5C4A2A;
+    --text-muted: #8C7A5A;
+    --white: #FFFDF7;
+    --shadow: rgba(26,18,8,0.15);
+    --shadow-deep: rgba(26,18,8,0.35);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #0e0a04;
+    color: var(--text);
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  /* ===== APP CONTAINER CENTRADO ===== */
+  .app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--cream);
+    min-height: 100vh;
+    position: relative;
+    box-shadow: 0 0 60px rgba(0,0,0,0.5);
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--dark);
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 40px 24px 120px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(200,151,58,0.18) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(155,32,32,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 10% 50%, rgba(45,90,39,0.12) 0%, transparent 55%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,151,58,0.15);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: pulse-ring 4s ease-in-out infinite;
+  }
+  .hero-ornament::before {
+    content: '';
+    position: absolute;
+    inset: 20px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,151,58,0.1);
+  }
+
+  @keyframes pulse-ring {
+    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.03); }
+  }
+
+  .hero-logo-wrap {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    animation: fadeUp 1s ease both;
+  }
+
+  .logo-flag {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 18px;
+  }
+  .flag-stripe {
+    width: 10px;
+    height: 48px;
+    border-radius: 2px;
+  }
+  .flag-stripe:nth-child(1) { background: var(--green); }
+  .flag-stripe:nth-child(2) { background: var(--white); }
+  .flag-stripe:nth-child(3) { background: var(--red); }
+
+  .logo-casa {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 0.55em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .logo-italia {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 58px;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: 0.05em;
+    text-shadow: 0 2px 40px rgba(200,151,58,0.4);
+  }
+
+  .logo-divider {
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 14px auto;
+  }
+
+  .logo-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    letter-spacing: 0.35em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+  }
+
+  .hero-tagline {
+    font-family: 'Dancing Script', cursive;
+    font-size: 22px;
+    color: rgba(255,253,247,0.65);
+    margin-top: 28px;
+    text-align: center;
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .hero-info {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1s 0.5s ease both;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: rgba(255,253,247,0.7);
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .hero-info-item span { color: var(--gold-light); }
+
+  .hero-cta {
+    margin-top: 48px;
+    animation: fadeUp 1s 0.7s ease both;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 20px 48px;
+    border-radius: 40px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(200,151,58,0.4);
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,151,58,0.5); }
+  .btn-primary:active { transform: translateY(0); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1s 1s ease both;
+  }
+  .scroll-text {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,253,247,0.4);
+  }
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scroll-anim 2s ease-in-out infinite;
+  }
+  @keyframes scroll-anim {
+    0%, 100% { opacity: 1; transform: scaleY(1) translateY(0); }
+    50% { opacity: 0.5; transform: scaleY(0.7) translateY(4px); }
+  }
+
+  /* ===== STICKY NAV ===== */
+  .sticky-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--dark);
+    border-bottom: 1px solid rgba(200,151,58,0.2);
+    padding: 0;
+    box-shadow: 0 4px 24px var(--shadow-deep);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .search-wrap {
+    flex: 1;
+    position: relative;
+  }
+  .search-wrap input {
+    width: 100%;
+    background: rgba(255,253,247,0.07);
+    border: 1px solid rgba(200,151,58,0.25);
+    border-radius: 20px;
+    padding: 10px 14px 10px 36px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-wrap input::placeholder { color: rgba(255,253,247,0.4); }
+  .search-wrap input:focus { border-color: var(--gold); }
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,253,247,0.4);
+    font-size: 15px;
+    pointer-events: none;
+  }
+
+  .cat-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding: 8px 16px 12px;
+    scrollbar-width: none;
+  }
+  .cat-scroll::-webkit-scrollbar { display: none; }
+
+  .cat-btn {
+    white-space: nowrap;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid rgba(200,151,58,0.25);
+    background: transparent;
+    color: rgba(255,253,247,0.6);
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .cat-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .cat-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--dark);
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(200,151,58,0.3);
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  main { padding-bottom: 200px; }
+
+  /* ===== TAX NOTE ===== */
+  .tax-note {
+    background: var(--dark-mid);
+    border-left: 3px solid var(--gold);
+    margin: 16px 16px 0;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .tax-note-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .tax-note p {
+    font-size: 12px;
+    color: rgba(255,253,247,0.75);
+    line-height: 1.5;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .tax-note p strong { color: var(--gold-light); }
+
+  /* ===== FEATURED ===== */
+  .featured-section {
+    padding: 28px 16px 0;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-pale), transparent);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .featured-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .featured-scroll::-webkit-scrollbar { display: none; }
+
+  .featured-card {
+    flex-shrink: 0;
+    width: 210px;
+    background: var(--dark-mid);
+    border: 1px solid rgba(200,151,58,0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .featured-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px var(--shadow-deep); }
+
+  .fc-img {
+    width: 100%;
+    height: 110px;
+    background: linear-gradient(135deg, var(--red-deep), var(--dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .fc-img .photo-placeholder {
+    color: rgba(255,253,247,0.3);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .fc-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(26,18,8,0.6));
+  }
+  .fc-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .fc-badge.mas-vendido { background: var(--gold); color: var(--dark); }
+  .fc-badge.recomendado { background: var(--green); color: white; }
+  .fc-badge.especialidad { background: var(--red); color: white; }
+  .fc-badge.nuevo { background: #2563eb; color: white; }
+
+  .fc-body { padding: 14px; }
+  .fc-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+  .fc-desc {
+    font-size: 11px;
+    color: rgba(255,253,247,0.5);
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .fc-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .fc-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+  }
+  .fc-add {
+    height: 38px;
+    padding: 0 16px;
+    border-radius: 20px;
+    background: var(--gold);
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .fc-add:active { transform: scale(0.92); }
+  .fc-add:hover { background: var(--gold-light); }
+
+  /* ===== MENU SECTION ===== */
+  .menu-section {
+    padding: 32px 16px 0;
+  }
+
+  .cat-section {
+    margin-bottom: 32px;
+  }
+  .cat-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .cat-section-title h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--dark);
+    position: relative;
+  }
+  .cat-section-title h2::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+    margin-top: 4px;
+  }
+
+  .subcategory-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--red);
+    font-weight: 500;
+    margin: 20px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(155,32,32,0.15);
+  }
+
+  /* ===== MENU ITEM ===== */
+  .menu-item {
+    background: var(--white);
+    border-radius: 14px;
+    margin-bottom: 12px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 12px var(--shadow);
+    border: 1px solid rgba(200,151,58,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: transparent;
+    transition: background 0.2s;
+  }
+  .menu-item:hover { transform: translateX(3px); box-shadow: 0 4px 20px var(--shadow); }
+  .menu-item:hover::before { background: var(--gold); }
+
+  .item-photo {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    border-radius: 12px;
+    background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    overflow: hidden;
+  }
+  .item-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+  .item-info { flex: 1; min-width: 0; }
+  .item-name-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+  .item-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .item-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 3px;
+  }
+  .item-badge.mas-vendido { background: #FEF3C7; color: #92400E; }
+  .item-badge.recomendado { background: #D1FAE5; color: #065F46; }
+  .item-badge.especialidad { background: #FEE2E2; color: #991B1B; }
+  .item-badge.nuevo { background: #DBEAFE; color: #1E40AF; }
+
+  .item-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.45;
+    margin-bottom: 0;
+  }
+
+  .item-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--red);
+    white-space: nowrap;
+  }
+  .item-add-btn {
+    height: 38px;
+    padding: 0 18px;
+    border-radius: 20px;
+    background: var(--green);
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: transform 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .item-add-btn:hover { background: var(--green-light); }
+  .item-add-btn:active { transform: scale(0.9); }
+
+  /* ===== BEBIDAS SECTION SPECIAL ===== */
+  .drinks-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .drink-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 10px var(--shadow);
+    border: 1px solid rgba(200,151,58,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  .drink-item:hover { transform: translateY(-2px); }
+  .drink-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  .drink-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+  .drink-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    gap: 8px;
+  }
+  .drink-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--red);
+  }
+  .drink-add {
+    height: 34px;
+    padding: 0 14px;
+    border-radius: 18px;
+    background: var(--green);
+    border: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: transform 0.15s, background 0.15s;
+  }
+  .drink-add:hover { background: var(--green-light); }
+  .drink-add:active { transform: scale(0.9); }
+
+  .drink-full {
+    grid-column: 1 / -1;
+  }
+
+  /* ===== BARRA DE PEDIDO FIJA (siempre visible) ===== */
+  .order-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 600px;
+    z-index: 150;
+    background: var(--dark);
+    border-top: 2px solid var(--gold);
+    padding: 14px 16px calc(14px + env(safe-area-inset-bottom));
+    box-shadow: 0 -8px 30px rgba(0,0,0,0.4);
+    transform-origin: bottom;
+    transition: transform 0.3s ease;
+  }
+  .order-bar-empty {
+    text-align: center;
+    color: rgba(255,253,247,0.5);
+    font-size: 13px;
+    padding: 6px 0;
+    font-weight: 500;
+  }
+  .order-bar-content { display: none; }
+  .order-bar.has-items .order-bar-content { display: block; }
+  .order-bar.has-items .order-bar-empty { display: none; }
+
+  .order-bar-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+  .order-bar-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .order-bar-count {
+    font-size: 12px;
+    color: var(--gold-light);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+  .order-bar-total {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+  }
+  .order-bar-review {
+    background: var(--gold);
+    border: none;
+    color: var(--dark);
+    padding: 14px 22px;
+    border-radius: 24px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .order-bar-review:hover { background: var(--gold-light); }
+  .order-bar-review:active { transform: scale(0.96); }
+
+  /* ===== CART OVERLAY & DRAWER ===== */
+  .cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,18,8,0.6);
+    z-index: 200;
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+  .cart-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    width: 100%;
+    max-width: 600px;
+    background: var(--white);
+    border-radius: 24px 24px 0 0;
+    z-index: 201;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-height: 92svh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 -20px 60px var(--shadow-deep);
+  }
+  .cart-drawer.open { transform: translateX(-50%) translateY(0); }
+
+  .cart-handle {
+    width: 44px;
+    height: 5px;
+    background: var(--cream-dark);
+    border-radius: 3px;
+    margin: 12px auto 0;
+    flex-shrink: 0;
+  }
+
+  .cart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--cream-dark);
+    flex-shrink: 0;
+  }
+  .cart-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .cart-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    transition: background 0.2s;
+  }
+  .cart-close:hover { background: var(--cream-dark); }
+
+  .cart-empty {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    gap: 14px;
+  }
+  .cart-empty-icon { font-size: 60px; }
+  .cart-empty p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  .cart-scroll-area {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  .cart-items {
+    padding: 16px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cart-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--cream);
+    border-radius: 14px;
+    animation: slideIn 0.3s ease;
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .ci-info { flex: 1; min-width: 0; }
+  .ci-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 2px;
+    line-height: 1.2;
+  }
+  .ci-price-each { font-size: 12px; color: var(--text-muted); }
+
+  .ci-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .ci-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid var(--cream-dark);
+    background: white;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    font-weight: 700;
+    transition: all 0.15s;
+    line-height: 1;
+  }
+  .ci-btn:hover { border-color: var(--red); color: var(--red); }
+  .ci-btn.remove:hover { background: var(--red); color: white; border-color: var(--red); }
+  .ci-qty {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    min-width: 26px;
+    text-align: center;
+    color: var(--text);
+  }
+
+  /* ===== TIPO DE ENTREGA ===== */
+  .delivery-section {
+    padding: 20px 20px 0;
+  }
+  .step-label {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .step-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 14px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .delivery-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .delivery-opt {
+    padding: 18px 12px;
+    border-radius: 16px;
+    border: 2.5px solid var(--cream-dark);
+    background: var(--cream);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .delivery-opt .opt-icon { font-size: 32px; }
+  .delivery-opt .opt-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .delivery-opt .opt-sub {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .delivery-opt.selected {
+    border-color: var(--green);
+    background: #E9F5E7;
+    box-shadow: 0 4px 16px rgba(45,90,39,0.2);
+  }
+  .delivery-opt.selected .opt-title { color: var(--green); }
+
+  .delivery-zone {
+    margin-top: 4px;
+    display: none;
+  }
+  .delivery-zone.visible { display: block; animation: fadeUp 0.3s ease; }
+  .zone-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .zone-select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--cream-dark);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238C7A5A' stroke-width='2'%3e%3cpath d='M6 9l6 6 6-6'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 18px;
+  }
+  .zone-select:focus { border-color: var(--gold); }
+  .zone-address {
+    width: 100%;
+    margin-top: 10px;
+    padding: 14px 16px;
+    border: 2px solid var(--cream-dark);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    resize: none;
+  }
+  .zone-address:focus { border-color: var(--gold); }
+
+  /* ===== DATOS DEL CLIENTE ===== */
+  .customer-section {
+    padding: 20px 20px 0;
+  }
+  .field-input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--cream-dark);
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    margin-bottom: 10px;
+  }
+  .field-input:focus { border-color: var(--gold); }
+
+  .payment-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .payment-btn {
+    padding: 14px 6px;
+    border-radius: 12px;
+    border: 2px solid var(--cream-dark);
+    background: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .payment-btn.selected {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+    color: var(--text);
+  }
+
+  /* ===== TOTALES ===== */
+  .cart-totals {
+    padding: 16px 20px;
+    margin-top: 8px;
+  }
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0;
+  }
+  .total-row .label { font-size: 14px; color: var(--text-light); }
+  .total-row .amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text);
+  }
+  .total-row.grand-total {
+    border-top: 2px solid var(--cream-dark);
+    margin-top: 8px;
+    padding-top: 12px;
+  }
+  .total-row.grand-total .label {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text);
+  }
+  .total-row.grand-total .amount {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--red);
+  }
+
+  /* ===== BOTÓN ENVIAR (footer fijo del drawer) ===== */
+  .cart-send-footer {
+    padding: 16px 20px calc(20px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--cream-dark);
+    flex-shrink: 0;
+    background: var(--white);
+  }
+  .send-warning {
+    font-size: 12px;
+    color: var(--red);
+    text-align: center;
+    margin-bottom: 10px;
+    min-height: 16px;
+    font-weight: 600;
+  }
+  .whatsapp-btn {
+    width: 100%;
+    padding: 20px;
+    background: #25D366;
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.2s;
+    box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+  }
+  .whatsapp-btn:hover { background: #1ebe5a; }
+  .whatsapp-btn:active { transform: scale(0.98); }
+  .whatsapp-btn svg { width: 24px; height: 24px; fill: white; flex-shrink: 0; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: var(--dark);
+    color: rgba(255,253,247,0.6);
+    padding: 32px 24px 24px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+  .footer-tag {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: rgba(255,253,247,0.4);
+    margin-bottom: 20px;
+  }
+  .footer-info {
+    font-size: 13px;
+    line-height: 1.9;
+    margin-bottom: 16px;
+  }
+  .footer-social {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+  }
+  .footer-copy {
+    margin-top: 24px;
+    font-size: 11px;
+    color: rgba(255,253,247,0.25);
+  }
+
+  /* ===== NO RESULTS ===== */
+  .no-results {
+    text-align: center;
+    padding: 48px 24px;
+    display: none;
+  }
+  .no-results.visible { display: block; }
+  .no-results p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .no-results small { font-size: 13px; color: var(--text-muted); }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 120px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--dark);
+    color: var(--gold);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 14px 24px;
+    border-radius: 30px;
+    z-index: 999;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    white-space: nowrap;
+    border: 1px solid rgba(200,151,58,0.3);
+    box-shadow: 0 8px 24px var(--shadow-deep);
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ===== MODALS ===== */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,18,8,0.7);
+    z-index: 300;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--white);
+    border-radius: 24px 24px 0 0;
+    padding: 28px 24px 40px;
+    width: 100%;
+    max-width: 600px;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+
+  .modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .modal-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+
+  .modal-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-light);
+    margin-bottom: 10px;
+    margin-top: 16px;
+  }
+
+  .option-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .option-chip {
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: 2px solid var(--cream-dark);
+    background: var(--cream);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .option-chip.selected {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+    color: var(--text);
+  }
+
+  .modal-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+  .modal-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--red);
+  }
+  .modal-add-btn {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    padding: 16px 28px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .modal-add-btn:hover { background: var(--green-light); }
+
+  @media (max-width: 380px) {
+    .logo-italia { font-size: 46px; }
+    .drinks-grid { grid-template-columns: 1fr; }
+    .drink-full { grid-column: 1; }
+    .payment-options { grid-template-columns: 1fr; }
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-ornament"></div>
+
+  <div class="hero-logo-wrap">
+    <div class="logo-flag">
+      <div class="flag-stripe"></div>
+      <div class="flag-stripe"></div>
+      <div class="flag-stripe"></div>
+    </div>
+    <div class="logo-casa">Casa</div>
+    <div class="logo-italia">Italia</div>
+    <div class="logo-divider"></div>
+    <div class="logo-subtitle">Pizzeria &amp; Ristorante</div>
+  </div>
+
+  <div class="hero-tagline">Qui si mangia la vera pizza</div>
+
+  <div class="hero-info">
+    <div class="hero-info-item">📍 <span>Avenida Santa Elena, Panamá</span></div>
+    <div class="hero-info-item">🕐 <span>Mar–Vie 12:00–9:00 PM · Sáb–Dom 12:00–10:00 PM</span></div>
+    <div class="hero-info-item">📱 <span>+507 6777-3593</span></div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#menu" class="btn-primary">VER EL MENÚ Y PEDIR</a>
+  </div>
+
+  <div class="hero-scroll">
+    <div class="scroll-text">Desplazar</div>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ===== STICKY NAV ===== -->
+<nav class="sticky-nav" id="menu">
+  <div class="nav-inner">
+    <div class="nav-brand">Casa Italia</div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar platos…" autocomplete="off" autocorrect="off">
+    </div>
+  </div>
+  <div class="cat-scroll" id="catScroll">
+    <button class="cat-btn active" onclick="filterCat('all', this)">Todo</button>
+    <button class="cat-btn" onclick="filterCat('entradas', this)">Entradas</button>
+    <button class="cat-btn" onclick="filterCat('pizzas', this)">Pizzas</button>
+    <button class="cat-btn" onclick="filterCat('platos', this)">Platos Fuertes</button>
+    <button class="cat-btn" onclick="filterCat('bebidas', this)">Bebidas</button>
+    <button class="cat-btn" onclick="filterCat('postres', this)">Postres</button>
+  </div>
+</nav>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+  <div class="tax-note">
+    <div class="tax-note-icon">ℹ️</div>
+    <p><strong>Nota sobre precios:</strong> Todos los precios mostrados no incluyen ITBMS. Se aplicará el 7% de impuesto según la legislación vigente.</p>
+  </div>
+
+  <!-- FEATURED -->
+  <section class="featured-section" data-cat="all">
+    <div class="section-header">
+      <div class="section-line"></div>
+      <div class="section-title">⭐ Destacados</div>
+      <div class="section-line"></div>
+    </div>
+    <div class="featured-scroll">
+
+      <div class="featured-card">
+        <div class="fc-img"><span class="photo-placeholder">Foto<br>próximamente</span><div class="fc-badge especialidad">Especialidad</div></div>
+        <div class="fc-body">
+          <div class="fc-name">Spaghetti a la Carbonara</div>
+          <div class="fc-desc">Guanciale, huevo, pecorino y pimienta negra</div>
+          <div class="fc-footer">
+            <div class="fc-price">$15</div>
+            <button class="fc-add" onclick="addToCartSimple('Spaghetti a la Carbonara', 15)">+ Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <div class="fc-img"><span class="photo-placeholder">Foto<br>próximamente</span><div class="fc-badge mas-vendido">Más vendido</div></div>
+        <div class="fc-body">
+          <div class="fc-name">Pizza de Pepperoni</div>
+          <div class="fc-desc">Mozzarella · Pepperoni americano</div>
+          <div class="fc-footer">
+            <div class="fc-price">$12</div>
+            <button class="fc-add" onclick="addToCartSimple('Pizza de Pepperoni', 12)">+ Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <div class="fc-img"><span class="photo-placeholder">Foto<br>próximamente</span><div class="fc-badge recomendado">Recomendado</div></div>
+        <div class="fc-body">
+          <div class="fc-name">Risotto Frutti di Mare</div>
+          <div class="fc-desc">Risotto con variedad de mariscos</div>
+          <div class="fc-footer">
+            <div class="fc-price">$18</div>
+            <button class="fc-add" onclick="addToCartSimple('Risotto Frutti di Mare', 18)">+ Agregar</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="featured-card">
+        <div class="fc-img"><span class="photo-placeholder">Foto<br>próximamente</span><div class="fc-badge nuevo">Nuevo</div></div>
+        <div class="fc-body">
+          <div class="fc-name">Tiramisú Tradicional</div>
+          <div class="fc-desc">Postre clásico de la casa</div>
+          <div class="fc-footer">
+            <div class="fc-price">$6</div>
+            <button class="fc-add" onclick="addToCartSimple('Tiramisú Tradicional', 6)">+ Agregar</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== MENU SECTIONS ===== -->
+  <section class="menu-section">
+
+    <!-- ENTRADAS -->
+    <div class="cat-section" data-cat="entradas">
+      <div class="cat-section-title"><h2>Entradas</h2></div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Almejas al Ajillo</div><span class="item-badge recomendado">Recomendado</span></div>
+          <div class="item-desc">Ajo, vino blanco, morrones asados finamente picados y perejil</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$9.50</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Almejas al Ajillo', 9.50)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Arancinis de Osobuco</div></div>
+          <div class="item-desc">2 bolitas de osobuco fundido en mozzarella, fritas sobre cama de pomodoro y pesto</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$6</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Arancinis de Osobuco', 6)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Croquetas de Prosciutto</div><span class="item-badge mas-vendido">Más vendido</span></div>
+          <div class="item-desc">6 croquetas apanadas con jamón serrano, acompañadas de salsa veneciana y pesto</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$8</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Croquetas de Prosciutto', 8)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Croquetas de Pulpo</div></div>
+          <div class="item-desc">6 croquetas apanadas rellenas con pulpo, aderezo especial y pesto</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$8</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Croquetas de Pulpo', 8)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Bruschetta de Prosciutto</div></div>
+          <div class="item-desc">4 bruschettas con jamón serrano picado en tomates cherry y mozzarella gratinada</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$5</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Bruschetta de Prosciutto', 5)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Crema de Lentejas</div></div>
+          <div class="item-desc">Crema fresca con trocitos de filete</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$3</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Crema de Lentejas', 3)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Crema de Zapallo</div></div>
+          <div class="item-desc">Crema fresca con crotones y queso parmesano</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$3</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Crema de Zapallo', 3)">+ Agregar</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PIZZAS -->
+    <div class="cat-section" data-cat="pizzas">
+      <div class="cat-section-title"><h2>Pizzas</h2></div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza Margarita</div></div>
+          <div class="item-desc">Mozzarella · Albahaca</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$10</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza Margarita', 10)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza Cuatro Quesos</div><span class="item-badge mas-vendido">Más vendido</span></div>
+          <div class="item-desc">Mozzarella · Provolone · Roquefort · Parmesano</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$11</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza Cuatro Quesos', 11)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza Vegetariana</div></div>
+          <div class="item-desc">Pimentones · Hongos · Cebolla · Tomate cherry</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$11</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza Vegetariana', 11)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza de Pepperoni</div><span class="item-badge mas-vendido">Más vendido</span></div>
+          <div class="item-desc">Mozzarella · Pepperoni americano</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$12</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza de Pepperoni', 12)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza de Chorizo Siciliano</div><span class="item-badge especialidad">Especialidad</span></div>
+          <div class="item-desc">Mozzarella · Provolone · Chorizo italiano · Rúgula</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$13</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza de Chorizo Siciliano', 13)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza Jamón de Pierna</div></div>
+          <div class="item-desc">Mozzarella · Jamón cocido</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$13</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza Jamón de Pierna', 13)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza Jamón Serrano</div><span class="item-badge recomendado">Recomendado</span></div>
+          <div class="item-desc">Mozzarella · Jamón serrano · Rúgula</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$14</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza Jamón Serrano', 14)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza de Camarones</div><span class="item-badge especialidad">Especialidad</span></div>
+          <div class="item-desc">Mozzarella · Camarones · Tomate cherry · Hongos · Rúgula</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$15</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Pizza de Camarones', 15)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Pizza Combinación</div><span class="item-badge recomendado">Personalizable</span></div>
+          <div class="item-desc">Base vegetariana (pimentones, hongos, cebolla, tomate cherry) + elige 2 proteínas</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$15</div>
+          <button class="item-add-btn" onclick="openCombinacionModal()">+ Elegir</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PLATOS FUERTES -->
+    <div class="cat-section" data-cat="platos">
+      <div class="cat-section-title"><h2>Platos Fuertes</h2></div>
+
+      <div class="subcategory-title">Pastas</div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Spaghetti a la Bolognesa</div></div>
+          <div class="item-desc">Salsa pomodoro San Marzano cocida con carne</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$14</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Spaghetti a la Bolognesa', 14)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Spaghetti a la Carbonara</div><span class="item-badge especialidad">Especialidad</span></div>
+          <div class="item-desc">Guanciale, huevo, pecorino y pimienta negra — receta auténtica</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$15</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Spaghetti a la Carbonara', 15)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Spaghetti con Langostinos</div><span class="item-badge recomendado">Recomendado</span></div>
+          <div class="item-desc">Salsa aglio e olio reducida en vino blanco</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$16</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Spaghetti con Langostinos', 16)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Rigatoni all'Amatriciana</div></div>
+          <div class="item-desc">Guanciale, pomodoro, queso pecorino y peperoncino</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$14</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Rigatoni all Amatriciana', 14)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Raviolones de Ricota</div></div>
+          <div class="item-desc">Salsa rosada de morrones asados y queso pecorino</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$14</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Raviolones de Ricota', 14)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Fettuccini Alfredo</div></div>
+          <div class="item-desc">Jamón de pierna cocido en salsa blanca</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$14</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Fettuccini Alfredo', 14)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Fettuccini de Salmón</div></div>
+          <div class="item-desc">Salsa rosada de morrones coronada con caviar rosado</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$15</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Fettuccini de Salmón', 15)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Gnocchi de Pollo</div></div>
+          <div class="item-desc">Gnocchi de papa con pollo en salsa pomodoro y queso gratinado</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$13</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Gnocchi de Pollo', 13)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Lasañas</div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Lasaña Siciliana de Carne</div><span class="item-badge mas-vendido">Más vendido</span></div>
+          <div class="item-desc">Pasta artesanal hecha en casa con tomate San Marzano</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$13</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Lasaña Siciliana de Carne', 13)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Lasaña de Pollo Tradicional</div></div>
+          <div class="item-desc">Pasta artesanal hecha en casa con tomate San Marzano y bechamel</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$13</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Lasaña de Pollo Tradicional', 13)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Milanesas</div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Milanesa de Pollo Pizzaiola</div><span class="item-badge recomendado">Recomendado</span></div>
+          <div class="item-desc">Milanesa gratinada con mozzarella y parmesano sobre cama de pomodoro con spaghetti aglio</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$14</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Milanesa de Pollo Pizzaiola', 14)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Risottos</div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Risotto Ai Funghi</div><span class="item-badge especialidad">Especialidad</span></div>
+          <div class="item-desc">Risotto de hongos frescos trufados</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$18</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Risotto Ai Funghi', 18)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Risotto Frutti di Mare</div><span class="item-badge especialidad">Especialidad</span></div>
+          <div class="item-desc">Risotto con variedad de mariscos</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$18</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Risotto Frutti di Mare', 18)">+ Agregar</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BEBIDAS -->
+    <div class="cat-section" data-cat="bebidas">
+      <div class="cat-section-title"><h2>Bebidas</h2></div>
+
+      <div class="subcategory-title">Refrescos</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Coca-Cola</div>
+          <div class="drink-footer"><div class="drink-price">$2</div><button class="drink-add" onclick="addToCartSimple('Coca-Cola', 2)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Coca-Cola Zero</div>
+          <div class="drink-footer"><div class="drink-price">$2</div><button class="drink-add" onclick="addToCartSimple('Coca-Cola Zero', 2)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Ginger Ale</div>
+          <div class="drink-footer"><div class="drink-price">$2</div><button class="drink-add" onclick="addToCartSimple('Ginger Ale', 2)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Fresca</div>
+          <div class="drink-footer"><div class="drink-price">$2</div><button class="drink-add" onclick="addToCartSimple('Fresca', 2)">+ Agregar</button></div>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Aguas</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Agua Embotellada</div>
+          <div class="drink-sub">Pequeña</div>
+          <div class="drink-footer"><div class="drink-price">$1</div><button class="drink-add" onclick="addToCartSimple('Agua Embotellada Pequeña', 1)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Agua Embotellada</div>
+          <div class="drink-sub">Grande</div>
+          <div class="drink-footer"><div class="drink-price">$2</div><button class="drink-add" onclick="addToCartSimple('Agua Embotellada Grande', 2)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">San Benedetto</div>
+          <div class="drink-sub">Con gas</div>
+          <div class="drink-footer"><div class="drink-price">$3</div><button class="drink-add" onclick="addToCartSimple('Agua con Gas San Benedetto', 3)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">San Pellegrino</div>
+          <div class="drink-sub">Agua mineral</div>
+          <div class="drink-footer"><div class="drink-price">$3</div><button class="drink-add" onclick="addToCartSimple('Agua Mineral San Pellegrino', 3)">+ Agregar</button></div>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Limonadas Artesanales</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Limonada Tradicional</div>
+          <div class="drink-footer"><div class="drink-price">$4</div><button class="drink-add" onclick="addToCartSimple('Limonada Tradicional', 4)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Limonada con Hierbabuena</div>
+          <div class="drink-footer"><div class="drink-price">$4</div><button class="drink-add" onclick="addToCartSimple('Limonada con Hierbabuena', 4)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item drink-full">
+          <div class="drink-name">Limonada de Coco</div>
+          <div class="drink-sub">Refrescante combinación tropical</div>
+          <div class="drink-footer"><div class="drink-price">$5</div><button class="drink-add" onclick="addToCartSimple('Limonada de Coco', 5)">+ Agregar</button></div>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Batidos Artesanales</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Batido de Fresa</div>
+          <div class="drink-sub">Con leche o con agua</div>
+          <div class="drink-footer"><div class="drink-price">$4</div><button class="drink-add" onclick="openBatidoModal('Batido de Fresa', 4)">+ Elegir</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Batido de Piña</div>
+          <div class="drink-sub">Con leche o con agua</div>
+          <div class="drink-footer"><div class="drink-price">$4</div><button class="drink-add" onclick="openBatidoModal('Batido de Piña', 4)">+ Elegir</button></div>
+        </div>
+        <div class="drink-item drink-full">
+          <div class="drink-name">Amapola</div>
+          <div class="drink-sub">Especialidad · Piña con coco</div>
+          <div class="drink-footer"><div class="drink-price">$5</div><button class="drink-add" onclick="addToCartSimple('Batido Amapola', 5)">+ Agregar</button></div>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Cervezas</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Cerveza Nacional</div>
+          <div class="drink-footer"><div class="drink-price">$3</div><button class="drink-add" onclick="addToCartSimple('Cerveza Nacional', 3)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Cerveza Importada</div>
+          <div class="drink-footer"><div class="drink-price">$5</div><button class="drink-add" onclick="addToCartSimple('Cerveza Importada', 5)">+ Agregar</button></div>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Vinos</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Copa Vino Tinto</div>
+          <div class="drink-footer"><div class="drink-price">$5</div><button class="drink-add" onclick="addToCartSimple('Copa de Vino Tinto', 5)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Copa Vino Blanco</div>
+          <div class="drink-footer"><div class="drink-price">$5</div><button class="drink-add" onclick="addToCartSimple('Copa de Vino Blanco', 5)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Botella Vino Tinto</div>
+          <div class="drink-footer"><div class="drink-price">$25</div><button class="drink-add" onclick="addToCartSimple('Botella de Vino Tinto', 25)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Botella Vino Blanco</div>
+          <div class="drink-footer"><div class="drink-price">$25</div><button class="drink-add" onclick="addToCartSimple('Botella de Vino Blanco', 25)">+ Agregar</button></div>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Sangría</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Copa de Sangría</div>
+          <div class="drink-footer"><div class="drink-price">$7</div><button class="drink-add" onclick="addToCartSimple('Copa de Sangría', 7)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Jarra de Sangría</div>
+          <div class="drink-footer"><div class="drink-price">$25</div><button class="drink-add" onclick="addToCartSimple('Jarra de Sangría', 25)">+ Agregar</button></div>
+        </div>
+      </div>
+
+      <div class="subcategory-title">Coctelería</div>
+      <div class="drinks-grid">
+        <div class="drink-item">
+          <div class="drink-name">Aperol Spritz</div>
+          <div class="drink-footer"><div class="drink-price">$7</div><button class="drink-add" onclick="addToCartSimple('Aperol Spritz', 7)">+ Agregar</button></div>
+        </div>
+        <div class="drink-item">
+          <div class="drink-name">Shot de Limoncello</div>
+          <div class="drink-footer"><div class="drink-price">$4</div><button class="drink-add" onclick="addToCartSimple('Shot de Limoncello', 4)">+ Agregar</button></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- POSTRES -->
+    <div class="cat-section" data-cat="postres">
+      <div class="cat-section-title"><h2>Postres</h2></div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Tiramisú Tradicional</div><span class="item-badge mas-vendido">Más vendido</span></div>
+          <div class="item-desc">El clásico postre italiano de la casa</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$6</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Tiramisú Tradicional', 6)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Tiramisú con Pistacho</div><span class="item-badge nuevo">Nuevo</span></div>
+          <div class="item-desc">Versión especial con pistacho de la casa</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$6</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Tiramisú con Pistacho', 6)">+ Agregar</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div class="item-photo">Foto</div>
+        <div class="item-info">
+          <div class="item-name-row"><div class="item-name">Cassata Siciliana</div><span class="item-badge especialidad">Especialidad</span></div>
+          <div class="item-desc">Postre tradicional siciliano de la casa</div>
+        </div>
+        <div class="item-right">
+          <div class="item-price">$5</div>
+          <button class="item-add-btn" onclick="addToCartSimple('Cassata Siciliana', 5)">+ Agregar</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="no-results" id="noResults">
+      <p>🔍 Sin resultados</p>
+      <small>Intenta con otro nombre o categoría</small>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-logo">Casa Italia</div>
+  <div class="footer-tag">Pizzeria &amp; Ristorante</div>
+  <div class="footer-info">
+    📍 Avenida Santa Elena, Panamá<br>
+    📱 +507 6777-3593<br>
+    🕐 Mar–Vie 12:00–9:00 PM · Sáb–Dom 12:00–10:00 PM
+  </div>
+  <div class="footer-social">@casaitaliapty</div>
+  <div class="footer-copy">© 2025 Casa Italia · Todos los precios en USD · ITBMS no incluido</div>
+</footer>
+
+</div><!-- /app-container -->
+
+<!-- ===== BARRA DE PEDIDO FIJA ===== -->
+<div class="order-bar" id="orderBar">
+  <div class="order-bar-empty">🛒 Tu pedido está vacío · Toca "+ Agregar" en los platos</div>
+  <div class="order-bar-content">
+    <div class="order-bar-summary">
+      <div class="order-bar-info">
+        <div class="order-bar-count" id="orderBarCount">0 productos</div>
+        <div class="order-bar-total" id="orderBarTotal">$0.00</div>
+      </div>
+      <button class="order-bar-review" onclick="openCart()">Ver pedido y enviar ›</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CART OVERLAY & DRAWER ===== -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-handle"></div>
+  <div class="cart-header">
+    <div class="cart-title">Tu Pedido</div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+
+  <div class="cart-empty" id="cartEmpty">
+    <div class="cart-empty-icon">🍽️</div>
+    <p>Tu carrito está vacío.<br>¡Agrega algo delicioso!</p>
+  </div>
+
+  <div class="cart-scroll-area" id="cartScrollArea" style="display:none;">
+
+    <div class="cart-items" id="cartItems"></div>
+
+    <!-- PASO 1: TIPO DE ENTREGA -->
+    <div class="delivery-section">
+      <div class="step-label"><span class="step-num">1</span> ¿Cómo quieres tu pedido?</div>
+      <div class="delivery-options">
+        <div class="delivery-opt" id="optRecoger" onclick="selectDelivery('recoger')">
+          <div class="opt-icon">🏪</div>
+          <div class="opt-title">Recoger en tienda</div>
+          <div class="opt-sub">Sin costo adicional</div>
+        </div>
+        <div class="delivery-opt" id="optDelivery" onclick="selectDelivery('delivery')">
+          <div class="opt-icon">🛵</div>
+          <div class="opt-title">Delivery</div>
+          <div class="opt-sub">Costo según zona</div>
+        </div>
+      </div>
+
+      <div class="delivery-zone" id="deliveryZone">
+        <div class="zone-label">Elige tu zona de entrega:</div>
+        <select class="zone-select" id="zoneSelect" onchange="updateZone()">
+          <option value="">-- Selecciona tu zona --</option>
+          <option value="Santa Elena|2">Santa Elena (cerca) — $2.00</option>
+          <option value="Centro|3.5">Centro — $3.50</option>
+          <option value="San Francisco|4">San Francisco — $4.00</option>
+          <option value="Costa del Este|5">Costa del Este — $5.00</option>
+          <option value="Punta Pacífica|5">Punta Pacífica — $5.00</option>
+          <option value="Brisas del Golf|6">Brisas del Golf — $6.00</option>
+          <option value="Otra zona|7">Otra zona (más lejana) — $7.00</option>
+        </select>
+        <textarea class="zone-address" id="zoneAddress" rows="2" placeholder="Escribe tu dirección exacta (calle, edificio, casa, referencia)…"></textarea>
+      </div>
+    </div>
+
+    <!-- PASO 2: DATOS -->
+    <div class="customer-section">
+      <div class="step-label"><span class="step-num">2</span> Tus datos</div>
+      <input type="text" class="field-input" id="customerName" placeholder="Tu nombre">
+      <input type="tel" class="field-input" id="customerPhone" placeholder="Tu teléfono (ej: 6000-0000)">
+
+      <div class="step-label" style="margin-top:6px;"><span class="step-num">3</span> ¿Cómo vas a pagar?</div>
+      <div class="payment-options">
+        <button class="payment-btn" onclick="selectPayment(this, 'Efectivo')">💵 Efectivo</button>
+        <button class="payment-btn" onclick="selectPayment(this, 'Tarjeta')">💳 Tarjeta</button>
+        <button class="payment-btn" onclick="selectPayment(this, 'Yappy')">📲 Yappy</button>
+      </div>
+    </div>
+
+    <!-- TOTALES -->
+    <div class="cart-totals">
+      <div class="total-row">
+        <span class="label">Subtotal</span>
+        <span class="amount" id="subtotalDisplay">$0.00</span>
+      </div>
+      <div class="total-row">
+        <span class="label">ITBMS (7%)</span>
+        <span class="amount" id="taxDisplay">$0.00</span>
+      </div>
+      <div class="total-row" id="deliveryRow" style="display:none;">
+        <span class="label">Costo de envío <span id="deliveryZoneLabel"></span></span>
+        <span class="amount" id="deliveryDisplay">$0.00</span>
+      </div>
+      <div class="total-row grand-total">
+        <span class="label">Total a pagar</span>
+        <span class="amount" id="totalDisplay">$0.00</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- BOTÓN ENVIAR -->
+  <div class="cart-send-footer" id="cartSendFooter" style="display:none;">
+    <div class="send-warning" id="sendWarning"></div>
+    <button class="whatsapp-btn" id="whatsappBtn" onclick="sendToWhatsApp()">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Enviar Pedido por WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- ===== BATIDO MODAL ===== -->
+<div class="modal-overlay" id="batidoModal">
+  <div class="modal">
+    <div class="modal-title" id="batidoName">Batido Artesanal</div>
+    <div class="modal-sub">Elige cómo lo prefieres</div>
+
+    <div class="modal-label">Preparación</div>
+    <div class="option-grid" id="batidoBase">
+      <button class="option-chip selected" onclick="selectChip(this)">Con Leche</button>
+      <button class="option-chip" onclick="selectChip(this)">Con Agua</button>
+    </div>
+
+    <div class="modal-price-row">
+      <div class="modal-price" id="batidoPrice">$4</div>
+      <button class="modal-add-btn" onclick="confirmBatido()">Agregar al Pedido</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PIZZA COMBINACIÓN MODAL ===== -->
+<div class="modal-overlay" id="combinacionModal">
+  <div class="modal">
+    <div class="modal-title">Pizza Combinación</div>
+    <div class="modal-sub">Base vegetariana · Elige exactamente 2 proteínas</div>
+
+    <div class="modal-label">Selecciona 2 proteínas</div>
+    <div class="option-grid" id="proteinGrid">
+      <button class="option-chip" onclick="toggleProtein(this)">Pepperoni</button>
+      <button class="option-chip" onclick="toggleProtein(this)">Jamón de Pierna</button>
+      <button class="option-chip" onclick="toggleProtein(this)">Jamón Serrano</button>
+      <button class="option-chip" onclick="toggleProtein(this)">Camarones</button>
+      <button class="option-chip" onclick="toggleProtein(this)">Chorizo Siciliano</button>
+    </div>
+    <div id="proteinWarning" style="font-size:12px;color:var(--red);margin-top:10px;min-height:18px;font-weight:600;"></div>
+
+    <div class="modal-price-row">
+      <div class="modal-price">$15</div>
+      <button class="modal-add-btn" onclick="confirmCombinacion()">Agregar al Pedido</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== STATE =====
+let cart = [];
+let selectedPayment = '';
+let deliveryType = '';
+let deliveryZoneName = '';
+let deliveryCost = 0;
+let batidoContext = {};
+
+function addToCartSimple(name, price) {
+  const existing = cart.find(i => i.name === name);
+  if (existing) { existing.qty++; }
+  else { cart.push({ name, price: parseFloat(price), qty: 1 }); }
+  updateCartUI();
+  showToast('✅ ' + name + ' agregado');
+}
+
+function removeFromCart(name) {
+  const idx = cart.findIndex(i => i.name === name);
+  if (idx > -1) {
+    if (cart[idx].qty > 1) cart[idx].qty--;
+    else cart.splice(idx, 1);
+    updateCartUI();
+  }
+}
+
+function calcTotals() {
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const tax = subtotal * 0.07;
+  const envio = (deliveryType === 'delivery') ? deliveryCost : 0;
+  const total = subtotal + tax + envio;
+  return { subtotal, tax, envio, total };
+}
+
+function updateCartUI() {
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  const { subtotal, tax, envio, total } = calcTotals();
+
+  const orderBar = document.getElementById('orderBar');
+  orderBar.classList.toggle('has-items', count > 0);
+  document.getElementById('orderBarCount').textContent = count + (count === 1 ? ' producto' : ' productos');
+  document.getElementById('orderBarTotal').textContent = '$' + total.toFixed(2);
+
+  const scrollArea = document.getElementById('cartScrollArea');
+  const emptyEl = document.getElementById('cartEmpty');
+  const sendFooter = document.getElementById('cartSendFooter');
+
+  if (cart.length === 0) {
+    emptyEl.style.display = 'flex';
+    scrollArea.style.display = 'none';
+    sendFooter.style.display = 'none';
+    return;
+  }
+
+  emptyEl.style.display = 'none';
+  scrollArea.style.display = 'block';
+  sendFooter.style.display = 'block';
+
+  const itemsEl = document.getElementById('cartItems');
+  itemsEl.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="ci-info">
+        <div class="ci-name">${item.name}</div>
+        <div class="ci-price-each">$${item.price.toFixed(2)} c/u</div>
+      </div>
+      <div class="ci-controls">
+        <button class="ci-btn remove" onclick="removeFromCart('${item.name.replace(/'/g, "\\'")}')">−</button>
+        <div class="ci-qty">${item.qty}</div>
+        <button class="ci-btn" onclick="addToCartSimple('${item.name.replace(/'/g, "\\'")}', ${item.price})">+</button>
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('subtotalDisplay').textContent = '$' + subtotal.toFixed(2);
+  document.getElementById('taxDisplay').textContent = '$' + tax.toFixed(2);
+
+  const deliveryRow = document.getElementById('deliveryRow');
+  if (deliveryType === 'delivery' && deliveryCost > 0) {
+    deliveryRow.style.display = 'flex';
+    document.getElementById('deliveryDisplay').textContent = '$' + envio.toFixed(2);
+    document.getElementById('deliveryZoneLabel').textContent = deliveryZoneName ? '(' + deliveryZoneName + ')' : '';
+  } else {
+    deliveryRow.style.display = 'none';
+  }
+
+  document.getElementById('totalDisplay').textContent = '$' + total.toFixed(2);
+}
+
+function openCart() {
+  document.getElementById('cartOverlay').classList.add('open');
+  document.getElementById('cartDrawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCart() {
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selectDelivery(type) {
+  deliveryType = type;
+  document.getElementById('optRecoger').classList.toggle('selected', type === 'recoger');
+  document.getElementById('optDelivery').classList.toggle('selected', type === 'delivery');
+  document.getElementById('deliveryZone').classList.toggle('visible', type === 'delivery');
+  if (type === 'recoger') { deliveryCost = 0; deliveryZoneName = ''; }
+  updateCartUI();
+}
+
+function updateZone() {
+  const val = document.getElementById('zoneSelect').value;
+  if (val) {
+    const [zona, costo] = val.split('|');
+    deliveryZoneName = zona;
+    deliveryCost = parseFloat(costo);
+  } else { deliveryZoneName = ''; deliveryCost = 0; }
+  updateCartUI();
+}
+
+function selectPayment(btn, method) {
+  selectedPayment = method;
+  document.querySelectorAll('.payment-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function sendToWhatsApp() {
+  const warning = document.getElementById('sendWarning');
+  if (cart.length === 0) { warning.textContent = '⚠️ Tu pedido está vacío.'; return; }
+  if (!deliveryType) { warning.textContent = '⚠️ Elige si vas a recoger o quieres delivery (Paso 1).'; return; }
+
+  if (deliveryType === 'delivery') {
+    if (!deliveryZoneName) { warning.textContent = '⚠️ Selecciona tu zona de entrega.'; return; }
+    if (!document.getElementById('zoneAddress').value.trim()) { warning.textContent = '⚠️ Escribe tu dirección exacta para el delivery.'; return; }
+  }
+
+  const name = document.getElementById('customerName').value.trim();
+  if (!name) { warning.textContent = '⚠️ Escribe tu nombre (Paso 2).'; return; }
+  const phone = document.getElementById('customerPhone').value.trim();
+  if (!phone) { warning.textContent = '⚠️ Escribe tu teléfono (Paso 2).'; return; }
+  if (!selectedPayment) { warning.textContent = '⚠️ Elige cómo vas a pagar (Paso 3).'; return; }
+
+  warning.textContent = '';
+
+  const { subtotal, tax, envio, total } = calcTotals();
+  if (!confirm('¿Confirmas tu pedido por un total de $' + total.toFixed(2) + '?')) { return; }
+
+  let msg = 'Hola Casa Italia,\n\nDeseo realizar el siguiente pedido:\n\n';
+  cart.forEach(item => { msg += `• ${item.qty}x ${item.name} — $${(item.price * item.qty).toFixed(2)}\n`; });
+  msg += `\nSubtotal: $${subtotal.toFixed(2)}`;
+  msg += `\nITBMS (7%): $${tax.toFixed(2)}`;
+  if (deliveryType === 'delivery') { msg += `\nEnvío (${deliveryZoneName}): $${envio.toFixed(2)}`; }
+  msg += `\nTOTAL: $${total.toFixed(2)}`;
+  msg += `\n\n--- DATOS ---`;
+  msg += `\nNombre: ${name}`;
+  msg += `\nTeléfono: ${phone}`;
+  if (deliveryType === 'recoger') {
+    msg += `\nTipo: RECOGER EN TIENDA`;
+  } else {
+    msg += `\nTipo: DELIVERY`;
+    msg += `\nZona: ${deliveryZoneName}`;
+    msg += `\nDirección: ${document.getElementById('zoneAddress').value.trim()}`;
+  }
+  msg += `\nMétodo de pago: ${selectedPayment}`;
+  msg += `\n\n¡Gracias!`;
+
+  window.open('https://wa.me/50767773593?text=' + encodeURIComponent(msg), '_blank');
+}
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  const cats = document.querySelectorAll('.cat-section');
+  let any = false;
+
+  if (!q) {
+    document.querySelectorAll('.menu-item, .drink-item').forEach(el => el.classList.remove('hidden'));
+    cats.forEach(el => el.style.display = '');
+    document.getElementById('noResults').classList.remove('visible');
+    document.querySelector('.featured-section').style.display = '';
+    return;
+  }
+
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.cat-btn')[0].classList.add('active');
+  document.querySelector('.featured-section').style.display = 'none';
+
+  cats.forEach(cat => {
+    let visible = false;
+    cat.querySelectorAll('.menu-item, .drink-item').forEach(el => {
+      const match = el.textContent.toLowerCase().includes(q);
+      el.classList.toggle('hidden', !match);
+      if (match) { visible = true; any = true; }
+    });
+    cat.style.display = visible ? '' : 'none';
+  });
+
+  document.getElementById('noResults').classList.toggle('visible', !any);
+});
+
+function filterCat(cat, btn) {
+  document.getElementById('searchInput').value = '';
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const featured = document.querySelector('.featured-section');
+  const cats = document.querySelectorAll('.cat-section');
+  document.querySelectorAll('.menu-item, .drink-item').forEach(el => el.classList.remove('hidden'));
+  document.getElementById('noResults').classList.remove('visible');
+
+  if (cat === 'all') {
+    cats.forEach(c => c.style.display = '');
+    featured.style.display = '';
+  } else {
+    featured.style.display = 'none';
+    cats.forEach(c => { c.style.display = c.dataset.cat === cat ? '' : 'none'; });
+  }
+  document.querySelector('#menu').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+function openBatidoModal(name, price) {
+  batidoContext = { name, price };
+  document.getElementById('batidoName').textContent = name;
+  document.getElementById('batidoPrice').textContent = '$' + price;
+  document.querySelectorAll('#batidoBase .option-chip').forEach((c, i) => c.classList.toggle('selected', i === 0));
+  document.getElementById('batidoModal').classList.add('open');
+}
+
+function selectChip(el) {
+  el.closest('.option-grid').querySelectorAll('.option-chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+function confirmBatido() {
+  const base = document.querySelector('#batidoBase .option-chip.selected');
+  const baseText = base ? base.textContent : 'Con Leche';
+  addToCartSimple(`${batidoContext.name} (${baseText})`, batidoContext.price);
+  document.getElementById('batidoModal').classList.remove('open');
+}
+
+document.getElementById('batidoModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+function openCombinacionModal() {
+  document.querySelectorAll('#proteinGrid .option-chip').forEach(c => c.classList.remove('selected'));
+  document.getElementById('proteinWarning').textContent = '';
+  document.getElementById('combinacionModal').classList.add('open');
+}
+
+function toggleProtein(el) {
+  const selected = document.querySelectorAll('#proteinGrid .option-chip.selected');
+  if (el.classList.contains('selected')) {
+    el.classList.remove('selected');
+    document.getElementById('proteinWarning').textContent = '';
+  } else {
+    if (selected.length >= 2) {
+      document.getElementById('proteinWarning').textContent = '⚠️ Solo puedes elegir 2 proteínas. Deselecciona una primero.';
+      return;
+    }
+    el.classList.add('selected');
+    document.getElementById('proteinWarning').textContent = '';
+  }
+}
+
+function confirmCombinacion() {
+  const selected = [...document.querySelectorAll('#proteinGrid .option-chip.selected')];
+  if (selected.length !== 2) {
+    document.getElementById('proteinWarning').textContent = '⚠️ Debes elegir exactamente 2 proteínas.';
+    return;
+  }
+  const proteins = selected.map(c => c.textContent).join(' + ');
+  addToCartSimple(`Pizza Combinación (${proteins})`, 15);
+  document.getElementById('combinacionModal').classList.remove('open');
+}
+
+document.getElementById('combinacionModal').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.remove('open');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>
